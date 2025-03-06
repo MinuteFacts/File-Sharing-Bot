@@ -6,8 +6,8 @@ from logging.handlers import RotatingFileHandler
 
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN", "7896862118:AAHOjDVxICwYSdfDEwioqkQ2Dk6sZuKcfzQ")
-API_ID = int(os.environ.get("API_ID", "16978078"))
-API_HASH = os.environ.get("API_HASH", "91ccaf748f031b656bbf64ff47f990e3")
+API_ID = int(os.environ.get("API_ID", "979826"))
+API_HASH = os.environ.get("API_HASH", "238183386c30590d073b457166ba260d")
 
 
 OWNER_ID = int(os.environ.get("OWNER_ID", "1077880102"))
@@ -15,7 +15,7 @@ DB_URL = os.environ.get("DB_URL", "mongodb+srv://ygovcu:fY1f9Wovol3NqhUX@cluster
 DB_NAME = os.environ.get("DB_NAME", "Cluster0")
 
 
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID", ""))
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002358588449"))
 FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "2"))
 
 
