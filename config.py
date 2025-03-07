@@ -15,7 +15,7 @@ DB_URL = os.environ.get("DB_URL", "mongodb+srv://ygovcu:fY1f9Wovol3NqhUX@cluster
 DB_NAME = os.environ.get("DB_NAME", "Cluster0")
 
 
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002358588449","-1001657207796","-1002399437916"))
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002358588449,-1001657207796,-1002399437916"))
 FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "3"))
 
 
@@ -42,7 +42,7 @@ except ValueError:
 
 
 
-CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION",<b> @Animes2u - {file_name} </b> )
+CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", "<b>@Animes2u - {file_name}</b>")
 
 PROTECT_CONTENT = True if os.environ.get('PROTECT_CONTENT', "True") == "True" else False
 
