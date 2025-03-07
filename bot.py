@@ -1,80 +1,92 @@
-from aiohttp import web
-from plugins import web_server
-import pyromod.listen
-from pyrogram import Client
-from pyrogram.enums import ParseMode
-import sys
-from datetime import datetime
-from config import API_HASH, API_ID, LOGGER, BOT_TOKEN, TG_BOT_WORKERS, FORCE_SUB_CHANNEL, CHANNEL_ID, PORT
-import pyrogram.utils
-
-pyrogram.utils.MIN_CHANNEL_ID = -1009999999999
+import os
+import logging
+from logging.handlers import RotatingFileHandler
 
 
 
-class Bot(Client):
-    def __init__(self):
-        super().__init__(
-            name="Bot",
-            api_hash=API_HASH,
-            api_id=API_ID,
-            plugins={"root": "plugins"},
-            workers=TG_BOT_WORKERS,
-            bot_token=BOT_TOKEN
-        )
-        self.LOGGER = LOGGER
 
-    async def start(self):
-        await super().start()
-        usr_bot_me = await self.get_me()
-        self.uptime = datetime.now()
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "7896862118:AAHOjDVxICwYSdfDEwioqkQ2Dk6sZuKcfzQ")
+API_ID = int(os.environ.get("API_ID", "979826"))
+API_HASH = os.environ.get("API_HASH", "238183386c30590d073b457166ba260d")
 
-        if FORCE_SUB_CHANNEL:
-            try:
-                link = (await self.get_chat(FORCE_SUB_CHANNEL)).invite_link
-                if not link:
-                    await self.export_chat_invite_link(FORCE_SUB_CHANNEL)
-                    link = (await self.get_chat(FORCE_SUB_CHANNEL)).invite_link
-                self.invitelink = link
-            except Exception as a:
-                self.LOGGER(__name__).warning(a)
-                self.LOGGER(__name__).warning("Bot Can't Export Invite link From Force Sub Channel!")
-                self.LOGGER(__name__).warning(f"Please Double Check The FORCE_SUB_CHANNEL Value And Make Sure Bot Is Admin In Channel With Invite Users Via Link Permission, Current Force Sub Channel Value: {FORCE_SUB_CHANNEL}")
-                self.LOGGER(__name__).info("\nBot Stopped.Message https://t.me/Sai_nallamilli For Support")
-                sys.exit()
 
-        try:
-            db_channel = await self.get_chat(CHANNEL_ID)
-            self.db_channel = db_channel
-            test = await self.send_message(chat_id = db_channel.id, text = "Hey 🖐")
-            await test.delete()
-        except Exception as e:
-            self.LOGGER(__name__).warning(e)
-            self.LOGGER(__name__).warning(f"Make Sure Bot Is Admin In DB Channel, And Double Check The CHANNEL_ID Value, Current Value: {CHANNEL_ID}")
-            self.LOGGER(__name__).info("\nBot Stopped. Message https://t.me/Sai_Nallamilli For Support")
-            sys.exit()
+OWNER_ID = int(os.environ.get("OWNER_ID", "1077880102"))
+DB_URL = os.environ.get("DB_URL", "mongodb+srv://ygovcu:fY1f9Wovol3NqhUX@cluster0.1mdno.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+DB_NAME = os.environ.get("DB_NAME", "Cluster0")
 
-        self.set_parse_mode(ParseMode.HTML)
-        self.LOGGER(__name__).info(f"Bot Running...!\n\nCreated By \nhttps://t.me/Animes2u")
-        self.LOGGER(__name__).info(f"""ミ💖Sai Nallamilli💖彡""")
-        self.username = usr_bot_me.username
-        #web-response
-        app = web.AppRunner(await web_server())
-        await app.setup()
-        bind_address = "0.0.0.0"
-        await web.TCPSite(app, bind_address, PORT).start()
 
-    async def stop(self, *args):
-        await super().stop()
-        self.LOGGER(__name__).info("Bot Stopped...")
-            
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002358588449"))
+FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "1"))
+
+
+FILE_AUTO_DELETE = int(os.getenv("FILE_AUTO_DELETE", "900")) # auto delete in seconds
+
+
+PORT = os.environ.get("PORT", "8080")
+TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
+
+
+
+try:
+    ADMINS=[6848088376]
+    for x in (os.environ.get("ADMINS", "6848088376").split()):
+        ADMINS.append(int(x))
+except ValueError:
+        raise Exception("Your Admins list does not contain valid integers.")
 
 
 
 
 
-# Jishu Developer 
-# Don't Remove Credit 🥺
-# Telegram Channel @Madflix_Bots
-# Backup Channel @JishuBotz
-# Developer @JishuDeveloper
+
+
+
+
+CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", "<b>@Animes2u - {file_name}</b>")
+
+PROTECT_CONTENT = True if os.environ.get('PROTECT_CONTENT', "True") == "True" else False
+
+DISABLE_CHANNEL_BUTTON = True if os.environ.get('DISABLE_CHANNEL_BUTTON', "True") == "True" else False
+
+BOT_STATS_TEXT = "<b>BOT UPTIME :</b>\n{uptime}"
+
+
+
+
+
+
+
+USER_REPLY_TEXT = "❌Don't Send Me Messages Directly I'm Only File Share Bot !"
+
+START_MSG = os.environ.get("START_MESSAGE", "Hello {mention}\n\nI Can Store Private Files In Specified Channel And Other Users Can Access It From Special Link.")
+
+FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "Hello {mention}\n\n<b>You Need To Join In My Channel/Group To Use Me\n\nKindly Please Join Channel</b>")
+
+
+
+
+
+ADMINS.append(1077880102)
+ADMINS.append(6848088376)
+
+LOG_FILE_NAME = "filesharingbot.txt"
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="[%(asctime)s - %(levelname)s] - %(name)s - %(message)s",
+    datefmt='%d-%b-%y %H:%M:%S',
+    handlers=[
+        RotatingFileHandler(
+            LOG_FILE_NAME,
+            maxBytes=50000000,
+            backupCount=10
+        ),
+        logging.StreamHandler()
+    ]
+)
+logging.getLogger("pyrogram").setLevel(logging.WARNING)
+
+
+def LOGGER(name: str) -> logging.Logger:
+    return logging.getLogger(name)
+  
