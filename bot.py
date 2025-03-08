@@ -16,11 +16,10 @@ class Bot(Client):
     def __init__(self):
         super().__init__(
             name="Bot",
-            api_hash=API_HASH,
-            api_id=API_ID,
+            api_hash="91ccaf748f031b656bbf64ff47f990e3",
+            api_id="16978078",
             plugins={"root": "plugins"},
-            workers=TG_BOT_WORKERS,
-            bot_token=BOT_TOKEN
+            bot_token="7896862118:AAHOjDVxICwYSdfDEwioqkQ2Dk6sZuKcfzQ"
         )
         self.LOGGER = LOGGER
 
@@ -51,12 +50,12 @@ class Bot(Client):
         except Exception as e:
             self.LOGGER(__name__).warning(e)
             self.LOGGER(__name__).warning(f"Make Sure Bot Is Admin In DB Channel, And Double Check The CHANNEL_ID Value, Current Value: {CHANNEL_ID}")
-            self.LOGGER(__name__).info("\nBot Stopped. Join https://t.me/MadflixBots_Support For Support")
+            self.LOGGER(__name__).info("\nBot Stopped. Join https://t.me/Animes2u For Support")
             sys.exit()
 
         self.set_parse_mode(ParseMode.HTML)
-        self.LOGGER(__name__).info(f"Bot Running...!\n\nCreated By \nhttps://t.me/Madflix_Bots")
-        self.LOGGER(__name__).info(f"""ミ💖 MADFLIX BOTZ 💖彡""")
+        self.LOGGER(__name__).info(f"Bot Running...!\n\nCreated By \nhttps://t.me/Animes2u")
+        self.LOGGER(__name__).info(f"""ミ💖 Sai Nallamilli 💖彡""")
         self.username = usr_bot_me.username
         #web-response
         app = web.AppRunner(await web_server())
