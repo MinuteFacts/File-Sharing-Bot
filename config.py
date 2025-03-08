@@ -5,12 +5,12 @@ from logging.handlers import RotatingFileHandler
 
 
 
-BOT_TOKEN = os.environ.get("BOT_TOKEN", "7543846429:AAF5GDFBCDsM_tghg6g3MXnZW_Ol5Xx5Occ")
-API_ID = int(os.environ.get("API_ID", "979826"))
-API_HASH = os.environ.get("API_HASH", "238183386c30590d073b457166ba260d")
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "7896862118:AAHOjDVxICwYSdfDEwioqkQ2Dk6sZuKcfzQ    ")
+API_ID = int(os.environ.get("API_ID", "16978078"))
+API_HASH = os.environ.get("API_HASH", "91ccaf748f031b656bbf64ff47f990e3")
 
 
-OWNER_ID = int(os.environ.get("OWNER_ID", "1074804932"))
+OWNER_ID = int(os.environ.get("OWNER_ID", " 1077880102"))
 DB_URL = os.environ.get("DB_URL", "mongodb+srv://ygovcu:fY1f9Wovol3NqhUX@cluster0.1mdno.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DB_NAME = os.environ.get("DB_NAME", "Cluster0")
 
@@ -29,7 +29,7 @@ TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 
 try:
     ADMINS=[6848088376]
-    for x in (os.environ.get("ADMINS", "1077880102").split()):
+    for x in (os.environ.get("ADMINS", "1074804932").split()):
         ADMINS.append(int(x))
 except ValueError:
         raise Exception("Your Admins list does not contain valid integers.")
@@ -66,8 +66,8 @@ FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "Hello {mention}\n\n<b>You Need 
 
 
 
-ADMINS.append(OWNER_ID)
-ADMINS.append(6848088376)
+ADMINS.append( 1077880102)
+ADMINS.append(1074804932)
 
 LOG_FILE_NAME = "filesharingbot.txt"
 
