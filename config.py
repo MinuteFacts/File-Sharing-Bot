@@ -5,7 +5,7 @@ from logging.handlers import RotatingFileHandler
 
 
 
-BOT_TOKEN = os.environ.get("BOT_TOKEN", "7896862118:AAHOjDVxICwYSdfDEwioqkQ2Dk6sZuKcfzQ    ")
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "7896862118:AAHOjDVxICwYSdfDEwioqkQ2Dk6sZuKcfzQ")
 API_ID = int(os.environ.get("API_ID", "16978078"))
 API_HASH = os.environ.get("API_HASH", "91ccaf748f031b656bbf64ff47f990e3")
 
@@ -16,7 +16,7 @@ DB_NAME = os.environ.get("DB_NAME", "Cluster0")
 
 
 CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002358532189"))
-FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "1"))
+FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "2"))
 
 
 FILE_AUTO_DELETE = int(os.getenv("FILE_AUTO_DELETE", "900")) # auto delete in seconds
