@@ -2,19 +2,20 @@ import os
 import logging
 from logging.handlers import RotatingFileHandler
 
-BOT_TOKEN = os.getenv("BOT_TOKEN", "7896862118:AAHOjDVxICwYSdfDEwioqkQ2Dk6sZuKcfzQ")
+BOT_TOKEN = os.getenv("BOT_TOKEN", "7926652055:AAFqvRKLW_0Ct9cAKa2wGD13vuHPy_7efS8")
 API_ID = int(os.getenv("API_ID", "16978078"))
 API_HASH = os.getenv("API_HASH", "91ccaf748f031b656bbf64ff47f990e3")
 
 OWNER_ID = int(os.getenv("OWNER_ID", "1077880102"))
-DB_URL = os.getenv("DB_URL", "mongodb+srv://ygovcu:fY1f9Wovol3NqhUX@cluster0.1mdno.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+DB_URL = os.getenv("DB_URL", "mongodb+srv://filestore3:Animes3u@cluster0.syalon0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DB_NAME = os.getenv("DB_NAME", "Cluster0")
 
-CHANNEL_ID = int(os.getenv("CHANNEL_ID", "-1001847420676"))  # Removed extra space
-FORCE_SUB_CHANNEL = int(os.getenv("FORCE_SUB_CHANNEL", "-1002358532189"))
-FORCE_SUB_CHANNEL2 = int(os.getenv("FORCE_SUB_CHANNEL2", "0"))
-FORCE_SUB_CHANNEL3 = int(os.getenv("FORCE_SUB_CHANNEL3", "0"))
-FORCE_SUB_CHANNEL4 = int(os.getenv("FORCE_SUB_CHANNEL4", "0"))
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002358588449"))
+FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "-1002358532189"))
+FORCE_SUB_CHANNEL2 = int(os.environ.get("FORCE_SUB_CHANNEL2", "-1001657207796"))
+FORCE_SUB_CHANNEL3 = int(os.environ.get("FORCE_SUB_CHANNEL3", "-1002335038787"))
+FORCE_SUB_CHANNEL4 = int(os.environ.get("FORCE_SUB_CHANNEL4", "-1002656761774"))
+
 
 FILE_AUTO_DELETE = int(os.getenv("FILE_AUTO_DELETE", "900"))
 
